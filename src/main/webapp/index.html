@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Movie Recommendation System</h1>
+        <p>Discover movies you'll love!</p>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Find Your Next Favourite Movie</h2>
+            <p>Explore movies and discover recommendations based on your interests.</p>
+            <input type="text" id="movieSearch"
+                   placeholder="Search for a movie...">
+            <button onclick="searchMovie()">Search</button>
+            <p id="message"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>AI-Powered Movie Recommendation System</p>
+    </footer>
+
+    <script>
+        function searchMovie() {
+            const movie = document.getElementById("movieSearch").value.trim();
+            const message = document.getElementById("message");
+
+            if (movie === "") {
+                message.textContent = "Please enter a movie name.";
+            } else {
+                message.textContent =
+                    "Search feature will be connected to the movie database soon.";
+            }
+        }
+    </script>
+
+</body>
+</html>
