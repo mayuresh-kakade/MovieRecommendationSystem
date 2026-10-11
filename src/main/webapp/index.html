@@ -4,44 +4,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Recommendation System</title>
+
+    <title>CineMatch | AI Movie Recommendations</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Movie Recommendation System</h1>
-        <p>Discover movies you'll love!</p>
+    <!-- Navigation -->
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">▶</span>
+            Cine<span>Match</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="movies">All Movies</a>
+            <a href="#genres">Genres</a>
+            <a href="#about">About</a>
+        </nav>
     </header>
 
+    <!-- Hero Section -->
     <main>
         <section class="hero">
-            <h2>Find Your Next Favourite Movie</h2>
-            <p>Explore movies and discover recommendations based on your interests.</p>
-            <input type="text" id="movieSearch"
-                   placeholder="Search for a movie...">
-            <a href="movies">View All Movies</a>
-            <p id="message"></p>
+            <div class="hero-content">
+                <p class="eyebrow">YOUR NEXT FAVORITE MOVIE STARTS HERE</p>
+
+                <h1>
+                    Discover Movies<br>
+                    <span>Made for You.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Explore incredible stories, discover hidden gems,
+                    and find your next favorite movie with personalized
+                    recommendations.
+                </p>
+
+                <form class="search-form" action="movies" method="get">
+                    <span class="search-icon" aria-hidden="true">⌕</span>
+
+                    <input
+                        type="search"
+                        name="search"
+                        id="movieSearch"
+                        placeholder="Search movies, genres..."
+                        aria-label="Search movies"
+                    >
+
+                    <button type="submit" class="primary-button">
+                        Search
+                    </button>
+                </form>
+
+                <div class="hero-tags">
+                    <span>Popular:</span>
+                    <a href="movies?search=Interstellar">Interstellar</a>
+                    <a href="movies?search=Inception">Inception</a>
+                    <a href="movies?search=Avatar">Avatar</a>
+                </div>
+            </div>
+
+            <div class="hero-decoration" aria-hidden="true">
+                <div class="poster poster-one">
+                    <span>SCI-FI</span>
+                </div>
+                <div class="poster poster-two">
+                    <span>ADVENTURE</span>
+                </div>
+                <div class="poster poster-three">
+                    <span>DRAMA</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features" id="about">
+            <article class="feature">
+                <div class="feature-icon">✦</div>
+                <div>
+                    <h3>Smart Recommendations</h3>
+                    <p>Discover movies based on genres and interests.</p>
+                </div>
+            </article>
+
+            <article class="feature">
+                <div class="feature-icon">⌕</div>
+                <div>
+                    <h3>Easy Movie Search</h3>
+                    <p>Find movies by title and explore their details.</p>
+                </div>
+            </article>
+
+            <article class="feature">
+                <div class="feature-icon">◎</div>
+                <div>
+                    <h3>Personalized Discovery</h3>
+                    <p>Find stories that match your taste.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- Genres -->
+        <section class="section" id="genres">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">EXPLORE YOUR MOOD</p>
+                    <h2>Browse by Genre</h2>
+                </div>
+            </div>
+
+            <div class="genre-grid">
+                <a class="genre-card genre-action"
+                   href="movies?genre=Action">
+                    <span class="genre-symbol">⚡</span>
+                    <span>Action</span>
+                </a>
+
+                <a class="genre-card genre-scifi"
+                   href="movies?genre=Science%20Fiction">
+                    <span class="genre-symbol">✦</span>
+                    <span>Sci-Fi</span>
+                </a>
+
+                <a class="genre-card genre-comedy"
+                   href="movies?genre=Comedy">
+                    <span class="genre-symbol">☻</span>
+                    <span>Comedy</span>
+                </a>
+
+                <a class="genre-card genre-drama"
+                   href="movies?genre=Drama">
+                    <span class="genre-symbol">◈</span>
+                    <span>Drama</span>
+                </a>
+
+                <a class="genre-card genre-horror"
+                   href="movies?genre=Horror">
+                    <span class="genre-symbol">☾</span>
+                    <span>Horror</span>
+                </a>
+
+                <a class="genre-card genre-romance"
+                   href="movies?genre=Romance">
+                    <span class="genre-symbol">♡</span>
+                    <span>Romance</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Movie Section -->
+        <section class="section movies-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">START EXPLORING</p>
+                    <h2>Explore Our Movies</h2>
+                    <p class="section-description">
+                        Browse the movies stored in your database.
+                    </p>
+                </div>
+
+                <a href="movies" class="text-link">
+                    View all movies →
+                </a>
+            </div>
+
+            <div class="empty-state">
+                <div class="empty-icon">▣</div>
+                <h3>Ready for your next movie?</h3>
+                <p>
+                    Open the movie collection to browse available titles.
+                    Movies will appear here when the live movie catalog
+                    is connected.
+                </p>
+                <a href="movies" class="primary-button">
+                    Explore Movies
+                </a>
+            </div>
+        </section>
+
+        <!-- AI Feature Banner -->
+        <section class="ai-banner">
+            <div>
+                <p class="eyebrow">COMING TO YOUR MOVIE EXPERIENCE</p>
+                <h2>Find your perfect movie with AI.</h2>
+                <p>
+                    Our recommendation engine will use movie metadata,
+                    TF-IDF, and cosine similarity to discover films
+                    similar to your favorites.
+                </p>
+            </div>
+
+            <div class="ai-badge" aria-hidden="true">
+                <span>✦</span>
+                <p>AI</p>
+                <small>POWERED</small>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>AI-Powered Movie Recommendation System</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">▶</span>
+            Cine<span>Match</span>
+        </a>
+
+        <p>
+            AI-Powered Movie Recommendation System
+        </p>
+
+        <p class="copyright">
+            © 2026 CineMatch. Built with Java, MySQL and AI.
+        </p>
     </footer>
-
-    <script>
-        function searchMovie() {
-            const movie = document.getElementById("movieSearch").value.trim();
-            const message = document.getElementById("message");
-
-            if (movie === "") {
-                message.textContent = "Please enter a movie name.";
-            } else {
-                message.textContent =
-                    "Search feature will be connected to the movie database soon.";
-            }
-        }
-    </script>
 
 </body>
 </html>
