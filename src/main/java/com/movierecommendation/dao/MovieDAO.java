@@ -72,4 +72,58 @@ public class MovieDAO {
 
         return movies;
     }
+    
+    public List<Movie> searchMovies(String search, String genre)
+            throws SQLException {
+
+        List<Movie> movies = new ArrayList<>();
+
+        StringBuilder sql = new StringBuilder(
+            "SELECT * FROM movies WHERE 1=1"
+        );
+
+        if (search != null && !search.trim().isEmpty()) {
+            sql.append(" AND title LIKE ?");
+        }
+
+        if (genre != null && !genre.trim().isEmpty()) {
+            sql.append(" AND genre LIKE ?");
+        }
+
+        sql.append(" ORDER BY title");
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps =
+                     con.prepareStatement(sql.toString())) {
+
+            int index = 1;
+
+            if (search != null && !search.trim().isEmpty()) {
+                ps.setString(index++, "%" + search.trim() + "%");
+            }
+
+            if (genre != null && !genre.trim().isEmpty()) {
+                ps.setString(index++, "%" + genre.trim() + "%");
+            }
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Movie movie = new Movie();
+
+                    movie.setMovieId(rs.getInt("movie_id"));
+                    movie.setTitle(rs.getString("title"));
+                    movie.setOverview(rs.getString("overview"));
+                    movie.setGenre(rs.getString("genre"));
+                    movie.setReleaseYear(rs.getInt("release_year"));
+                    movie.setPosterUrl(rs.getString("poster_url"));
+                    movie.setTmdbId(rs.getInt("tmdb_id"));
+
+                    movies.add(movie);
+                }
+            }
+        }
+
+        return movies;
+    }
+   
 }
